@@ -9,7 +9,7 @@
   const int mqttPort = 1883;
   // const char* mqttUser = "yourMQTTuser";
   // const char* mqttPassword = "yourMQTTpassword";
-  const char* topic_pub = "bssmheavn/2";
+  const char* topic_pub = "bssmheavn/1";
   const char* topic_sub = "bssmheavn/#";
 
   const int trigPin = D1;
