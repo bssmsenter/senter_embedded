@@ -25,13 +25,17 @@ void loop(){
   // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
   // Calculate the distance
-  distanceCm = duration * SOUND_SPEED/2;
-  
-  // Convert to inches
-  distanceInch = distanceCm * CM_TO_INCH;
-  
-  // Prints the distance in the Serial Monitor
-  Serial.print("Distance (cm): ");
-  Serial.println(distanceCm);
-   delay(500);
+  distanceCm = duration * SOUND_SPEED/2;//초음파센서
+  if(distanceCm <=200){
+    Serial.print("Distance (cm): ");
+    int height = 200-(int)distanceCm;
+    Serial.print(height);
+    Serial.print(":");
+    Serial.println(distanceCm);
+   
+  }
+  else{
+    Serial.println("out");
+  }
+  delay(500);
 }
