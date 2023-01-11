@@ -6,6 +6,9 @@ float distanceInch;
 //define sound speed in cm/uS
 #define SOUND_SPEED 0.034
 #define CM_TO_INCH 0.393701 
+
+int count;
+
 void setup()
 {
   Serial.begin(115200); // Starts the serial communication
@@ -26,16 +29,21 @@ void loop(){
   duration = pulseIn(echoPin, HIGH);
   // Calculate the distance
   distanceCm = duration * SOUND_SPEED/2;//초음파센서
-  if(distanceCm <=200){
+  int height = 29-(int)distanceCm;
+  if(height>1 && count==0){
     Serial.print("Distance (cm): ");
-    int height = 200-(int)distanceCm;
-    Serial.print(height);
-    Serial.print(":");
-    Serial.println(distanceCm);
-   
+    Serial.println(height);
+    if(height>15){
+    Serial.println("adult");
+    }
+    else{
+    Serial.println("child");
+    }
+    count = 1;
   }
-  else{
-    Serial.println("out");
+  else if(count == 1){
+    count = 0;
   }
-  delay(500);
+
+  delay(200);
 }
